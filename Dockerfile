@@ -6,14 +6,14 @@ RUN apt-get update && apt-get -y install \
     build-essential \
     git \
     curl \
-    openssh-server \
+    openssh-server
     npm
+
+ln -s /usr/bin/nodejs /usr/bin/node
+npm install velocity-cli -g
 
 # Install Meteor
 RUN curl https://install.meteor.com/ | sh
-
-# Install Velocity CLI
-ln -s /usr/bin/nodejs /usr/bin/node %% npm install velocity-cli -g
 
 # Add user jenkins
 RUN adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd
