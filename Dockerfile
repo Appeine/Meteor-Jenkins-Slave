@@ -6,17 +6,18 @@ RUN apt-get update && apt-get -y install \
     build-essential \
     git \
     curl \
-    openssh-server
+    openssh-server \
+    npm
 
 # Install Meteor
 RUN curl https://install.meteor.com/ | sh
 
 # Add user jenkins
-RUN adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd
+RUN adduser --quiet jenkins
 
 # Configure SSH
 RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 RUN mkdir -p /var/run/sshd
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["echo "jenkins:jenkins" | chpasswd && /usr/sbin/sshd", "-D"]
