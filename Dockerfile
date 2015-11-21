@@ -17,8 +17,7 @@ ln -s /usr/bin/nodejs /usr/bin/node
 npm install velocity-cli -g
 
 # Add user jenkins
-RUN adduser --quiet jenkins
-RUN echo "jenkins:jenkins" | chpasswd
+RUN adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd
 
 # Configure SSH
 RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
