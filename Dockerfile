@@ -12,7 +12,7 @@ RUN apt-get update && apt-get -y install \
 RUN curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh
 
 # Install Velocity CLI
-RUN ln -s /usr/bin/nodejs /usr/bin/node && npm install velocity-cli
+RUN ln -s /usr/bin/nodejs /usr/bin/node && npm install velocity-cli -g
 
 ENV JENKINS_SWARM_VERSION 2.0
 ENV HOME /home/jenkins-slave
