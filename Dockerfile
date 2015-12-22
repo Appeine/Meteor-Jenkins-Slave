@@ -1,4 +1,4 @@
-FROM java:8u45-jdk
+FROM java:7-jdk
 MAINTAINER Quint Stoffers <quint@appeine.com>
 
 RUN apt-get update && apt-get -y install \
